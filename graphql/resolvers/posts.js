@@ -64,6 +64,25 @@ module.exports = {
             }
         },
 
+        async updatePost(_, args, context) {
+           
+
+            try {
+             
+                    if (args.body.trim() === "") {
+                        throw new Error('Post body should not be empty');
+                    }
+                    
+                    const post = await Post.findByIdAndUpdate(args.postId, {$set: {body:args.body}}, {new:true});
+                    return post;
+            
+             
+                
+            } catch (err) {
+                throw new Error(err);
+            }
+        },
+
         async likePost(_, { postId }, context) {
             const {username} = checkAuth(context);
 

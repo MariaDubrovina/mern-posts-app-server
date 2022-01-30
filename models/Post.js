@@ -19,7 +19,7 @@ const PostSchema = new Schema({
     ],
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'users' //name of collection at MongoDB, this let us automattically populate user using Mongoose
     }
 });
 
